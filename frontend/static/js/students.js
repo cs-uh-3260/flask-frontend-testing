@@ -22,12 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     //Delete student
-    document.getElementById('delete-student-form').addEventListener('submit', async (e) => {
+    document.getElementById('delete-student-form')?.addEventListener('submit', async (e) => {
         e.preventDefault();
         try {
             const studentemail = document.getElementById('student-email').value;
             const response = await axios.delete(`${API_URL}/students/${studentemail}`);
-            alert(response.data.message);
             alert('Student deleted successfully!');
             e.target.reset();
         } catch (error) {
