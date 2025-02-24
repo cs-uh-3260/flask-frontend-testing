@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     // Add student
     document.getElementById('create-student-form')?.addEventListener('submit', async (e) => {
@@ -17,6 +18,20 @@ document.addEventListener("DOMContentLoaded", () => {
             e.target.reset();
         } catch (error) {
             alert('Error adding student: ' + error.response?.data?.message || error.message);
+        }
+    });
+
+    //Delete student
+    document.getElementById('delete-student-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try {
+            const studentemail = document.getElementById('student-email').value;
+            const response = await axios.delete(`${API_URL}/students/${studentemail}`);
+            alert(response.data.message);
+            alert('Student deleted successfully!');
+            e.target.reset();
+        } catch (error) {
+            alert('Error deleting student: ' + error.response?.data?.message || error.message);
         }
     });
 });
