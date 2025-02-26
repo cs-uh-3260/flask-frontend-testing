@@ -17,7 +17,6 @@ CORS(
         r"/*": {
             "origins": [
                 "http://127.0.0.1:8000",
-                "http://10.228.141.212:8000",
             ],  # Get origin from env with fallback
             "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
             "allow_headers": ["Content-Type", "Authorization"],
