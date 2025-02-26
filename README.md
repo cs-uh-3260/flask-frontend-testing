@@ -49,4 +49,7 @@ pytest
 
 ## Your Task
 
-Add another browser-based system test for the delete student page
+Add two tests for the delete student page:
+
+Test 1: makes sure that the homepage has the delete student link and goes to the right page
+Test 2: makes sure delete student works as expected (hint: you may need to first add a student so you are sure the email you will delete exists)
