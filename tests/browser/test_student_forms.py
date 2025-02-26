@@ -21,6 +21,20 @@ def driver():
     driver.quit()
 
 
+def test_navigate_to_add_student_page(driver):
+    driver.get("http://127.0.0.1:8000")
+
+    # assert that there's a link foir add student
+    assert "Add Student" in driver.page_source
+    add_link = driver.find_element(By.LINK_TEXT, "Add Student")
+    add_link.click()
+
+    # wait until we are on the create_Student page
+    # assert that we are on the right page by checking the content
+    WebDriverWait(driver, 10).until(EC.url_contains("/create_student"))
+    assert "Create New Student" in driver.page_source
+
+
 def test_add_student(driver):
     driver.get("http://127.0.0.1:8000/create_student")
 
