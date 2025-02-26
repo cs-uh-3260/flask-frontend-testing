@@ -11,12 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 
             {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 }
             });
             alert('Student added successfully!');
             e.target.reset();
         } catch (error) {
+            alert(error)
             alert('Error adding student: ' + error.response?.data?.message || error.message);
         }
     });
@@ -38,7 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // list students
 
 function fetchStudents() {
-    axios.get(`${API_URL}/students/`) 
+    axios.get(`${API_URL}/students/`, 
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }) 
         .then(response => {
             const students = response.data;
             const tableBody = document.querySelector("#students-table tbody");
